@@ -99,7 +99,10 @@
                     return this.proyectos.length;
                 },
             },
-            
+            components: {
+                TotalProyectos,
+                ProgressBar
+            },
            
     };
 
