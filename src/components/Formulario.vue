@@ -50,7 +50,7 @@
         </div>
 
         <div class="col-12 col-md-7">
-            <total-proyectos :numeroProyectos="numeroProyectos" :proyectos="proyectos" :cambiarEstado="cambiarEstado"/>
+            <total-proyectos :numeroProyectos="numeroProyectos" :proyectos="proyectos" :cambiarEstado="cambiarEstado" :limpiarData="limpiarData" :borrado="borrado"/>
 
         </div>
         
