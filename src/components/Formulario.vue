@@ -36,8 +36,8 @@
     </form>
         </div>
 
-        <div class="col-12 col-md-7">
-            <total-proyectos :numeroProyectos="numeroProyectos" :proyectos="proyectos" :cambiarEstado="cambiarEstado" :limpiarData="limpiarData" :borrado="borrado"/>
+        <div class="col-12 col-md-7"> 
+            <total-proyectos :numeroProyectos="numeroProyectos" :proyectos="proyectos" :cambiarEstado="cambiarEstado" :limpiarData="limpiarData"/>
 
         </div>
         
@@ -86,6 +86,11 @@ import { onMounted } from 'vue';
             },
             saveData(){
                 localStorage.setItem("proyectos", JSON.stringify(this.proyectos));
+            },
+            
+                limpiarData() {
+                this.proyectos = [];
+                localStorage.clear;
             },
         },
             computed: {

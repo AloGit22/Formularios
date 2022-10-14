@@ -3,6 +3,9 @@
         <div class="col-6 my-2">
             <h3>Total Proyectos: {{numeroProyectos}}</h3> 
         </div>
+        <div class="col-6 text-end">
+            <button @click="limpiarData" class="btn btn-warning" >Limpiar Proyectos</button>
+        </div>
     </div>
 
     <div class="table-responsive">
