@@ -79,8 +79,6 @@
                     };
                     this.proyectos.push(proyecto);
 
-                    this.saveData();
-
                     this.numeroProyectos++;
                     this.proyecto = "",
                     this.tipo = "",
@@ -100,19 +98,8 @@
                 numeroProyectos() {
                     return this.proyectos.length;
                 },
-                porcentaje() {
-                    let completados = 0;
-                    this.proyectos.map(proyecto => {
-                        if (proyecto.completado)
-                            completados++;
-                    });
-                    return (completados * 100) / this.numeroProyectos || 0; 
-                },
             },
-            components: {
-                TotalProyectos,
-                ProgressBar
-            },
+            
            
     };
 
