@@ -1,19 +1,6 @@
 <template>
 
     <div class="row">
-        <h3 class="text-center">Progreso: 0%</h3>
-          <div class="progress">
-              <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
-              role="progressbar"
-              :aria-valuenow="75" 
-              aria-valuemin="0" 
-              aria-valuemax="100" 
-              :style="with: 100%" 
-              ></div>
-            </div>
-    
-
-
         <div class="col-12 mb-4">
             <ProgressBar :porcentaje="porcentaje">
 
@@ -60,6 +47,9 @@
 
 <script>
 
+import TotalProyectos from './TotalProyectos.vue';
+import ProgressBar from './ProgressBar.vue';
+import { onMounted } from 'vue';
     export default{
         data: () => ({
                 proyecto: "",
@@ -79,6 +69,8 @@
                     };
                     this.proyectos.push(proyecto);
 
+                    this.saveData();
+
                     this.numeroProyectos++;
                     this.proyecto = "",
                     this.tipo = "",
@@ -92,18 +84,39 @@
                 this.saveData();
                 
             },
-           
+            saveData(){
+                localStorage.setItem("proyectos", JSON.stringify(this.proyectos));
+            },
+            
+                limpiarData() {
+                this.proyectos = [];
+                localStorage.clear;
+            },
+            borrado: function(index) {
+                this.proyectos.splice(index, 1);
+                this.saveData();
+            },
         },
             computed: {
                 numeroProyectos() {
                     return this.proyectos.length;
+                },
+                porcentaje() {
+                    let completados = 0;
+                    this.proyectos.map(proyecto => {
+                        if (proyecto.completado)
+                            completados++;
+                    });
+                    return (completados * 100) / this.numeroProyectos || 0; 
                 },
             },
             components: {
                 TotalProyectos,
                 ProgressBar
             },
-           
+            mounted() {
+                this.proyectos= JSON.parse(localStorage.getItem("proyectos")) || [];
+            },
     };
 
 </script>
