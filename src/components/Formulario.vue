@@ -87,15 +87,6 @@ import { onMounted } from 'vue';
             saveData(){
                 localStorage.setItem("proyectos", JSON.stringify(this.proyectos));
             },
-            
-                limpiarData() {
-                this.proyectos = [];
-                localStorage.clear;
-            },
-            borrado: function(index) {
-                this.proyectos.splice(index, 1);
-                this.saveData();
-            },
         },
             computed: {
                 numeroProyectos() {
